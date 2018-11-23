@@ -1,6 +1,7 @@
 #include <iostream>
 #include "heuristike.h"
 #include "pravila.h"
+#include "alphabeta.h"
 
 int main() {
     int tabla[24] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
@@ -51,8 +52,8 @@ int main() {
             }
             else {
                 //engine je na potezu
-                potez[0] = 14;
-                potez[2] = -1;
+                alphabeta(tabla, potez, 7, brPoteza);
+                std::cout << potez[0] << " " << potez[2] << std::endl;
             }
 
             brPoteza++;
