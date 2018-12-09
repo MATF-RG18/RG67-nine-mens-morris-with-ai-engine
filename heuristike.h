@@ -12,5 +12,8 @@ void miceIOtvoreneMice(int tabla[24], int rezultat[3]);
 int brojFiguraUMicamaPrvaFaza(int tabla[24]);
 int dvaITriKonfiguracija(int tabla[24], int pozicija);
 void brojDvaITriKonfiguracija(int tabla[24], int rezultat[2]);
+int slobodnaMestaOkoPozicije(int tabla[24], int pozicija);
+int sloboda(int tabla[24]);
+
 
 #endif // HEURISTIKE_H

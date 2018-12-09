@@ -1,5 +1,6 @@
 #include "heuristike.h"
 
+
 /*
 proverava da li se figura na toj poziciji nalazi u mici
 vraca 1 ako da, 0 ako ne
@@ -591,7 +592,7 @@ void brojFigura(int tabla[24], int rezultat[2]) {
 F-ja u rezultat[0] upisuje razliku broja figura u micama prvog i drugog igraca,
 u rezultat[1] upisuje razliku broja otvorenih mica prvog i drugog igraca,
 u rezultat[2] upisuje razliku broja trakalica prvog i drugog igraca
-niz rezultat[3] koji mu se prosledjuje mora biti {0, 0, 0}
+niz int rezultat[3] koji mu se prosledjuje mora biti {0, 0, 0}
 */
 void miceIOtvoreneMice(int tabla[24], int rezultat[3]) {
     int i;
@@ -855,5 +856,228 @@ void brojDvaITriKonfiguracija(int tabla[24], int rezultat[2]) {
           }
       }
   }
+}
+
+
+int slobodnaMestaOkoPozicije(int tabla[24], int pozicija) {
+    int brojac = 0;
+
+    switch (pozicija) {
+        case 0:
+            if (tabla[1] == 0)
+                brojac++;
+            if (tabla[9] == 0)
+                brojac++;
+            return brojac;
+
+        case 1:
+            if (tabla[0] == 0)
+                brojac++;
+            if (tabla[4] == 0)
+                brojac++;
+            if (tabla[2] == 0)
+                brojac++;
+            return brojac;
+
+        case 2:
+            if (tabla[1] == 0)
+                brojac++;
+            if (tabla[14] == 0)
+                brojac++;
+            return brojac;
+
+        case 3:
+            if (tabla[10] == 0)
+                brojac++;
+            if (tabla[4] == 0)
+                brojac++;
+            return brojac;
+
+        case 4:
+            if (tabla[1] == 0)
+                brojac++;
+            if (tabla[3] == 0)
+                brojac++;
+            if (tabla[7] == 0)
+                brojac++;
+            if (tabla[5] == 0)
+                brojac++;
+            return brojac;
+
+        case 5:
+            if (tabla[4] == 0)
+                brojac++;
+            if (tabla[13] == 0)
+                brojac++;
+            return brojac;
+
+        case 6:
+            if (tabla[7] == 0)
+                brojac++;
+            if (tabla[11] == 0)
+                brojac++;
+            return brojac;
+
+        case 7:
+            if (tabla[6] == 0)
+                brojac++;
+            if (tabla[4] == 0)
+                brojac++;
+            if (tabla[8] == 0)
+                brojac++;
+            return brojac;
+
+        case 8:
+            if (tabla[7] == 0)
+                brojac++;
+            if (tabla[12] == 0)
+                brojac++;
+            return brojac;
+
+        case 9:
+            if (tabla[0] == 0)
+                brojac++;
+            if (tabla[10] == 0)
+                brojac++;
+            if (tabla[21] == 0)
+                brojac++;
+            return brojac;
+
+        case 10:
+            if (tabla[3] == 0)
+                brojac++;
+            if (tabla[9] == 0)
+                brojac++;
+            if (tabla[18] == 0)
+                brojac++;
+            if (tabla[11] == 0)
+                brojac++;
+            return brojac;
+
+        case 11:
+            if (tabla[6] == 0)
+                brojac++;
+            if (tabla[10] == 0)
+                brojac++;
+            if (tabla[15] == 0)
+                brojac++;
+            return brojac;
+
+        case 12:
+            if (tabla[8] == 0)
+                brojac++;
+            if (tabla[13] == 0)
+                brojac++;
+            if (tabla[17] == 0)
+                brojac++;
+            return brojac;
+
+        case 13:
+            if (tabla[5] == 0)
+                brojac++;
+            if (tabla[12] == 0)
+                brojac++;
+            if (tabla[20] == 0)
+                brojac++;
+            if (tabla[14] == 0)
+                brojac++;
+            return brojac;
+
+        case 14:
+            if (tabla[2] == 0)
+                brojac++;
+            if (tabla[13] == 0)
+                brojac++;
+            if (tabla[23] == 0)
+                brojac++;
+            return brojac;
+
+        case 15:
+            if (tabla[11] == 0)
+                brojac++;
+            if (tabla[16] == 0)
+                brojac++;
+            return brojac;
+
+        case 16:
+            if (tabla[15] == 0)
+                brojac++;
+            if (tabla[19] == 0)
+                brojac++;
+            if (tabla[17] == 0)
+                brojac++;
+            return brojac;
+
+        case 17:
+            if (tabla[16] == 0)
+                brojac++;
+            if (tabla[12] == 0)
+                brojac++;
+            return brojac;
+
+        case 18:
+            if (tabla[10] == 0)
+                brojac++;
+            if (tabla[19] == 0)
+                brojac++;
+            return brojac;
+
+        case 19:
+            if (tabla[16] == 0)
+                brojac++;
+            if (tabla[18] == 0)
+                brojac++;
+            if (tabla[22] == 0)
+                brojac++;
+            if (tabla[20] == 0)
+                brojac++;
+            return brojac;
+
+        case 20:
+            if (tabla[19] == 0)
+                brojac++;
+            if (tabla[13] == 0)
+                brojac++;
+            return brojac;
+
+        case 21:
+            if (tabla[9] == 0)
+                brojac++;
+            if (tabla[22] == 0)
+                brojac++;
+            return brojac;
+
+        case 22:
+            if (tabla[21] == 0)
+                brojac++;
+            if (tabla[19] == 0)
+                brojac++;
+            if (tabla[23] == 0)
+                brojac++;
+            return brojac;
+
+        case 23:
+            if (tabla[22] == 0)
+                brojac++;
+            if (tabla[14] == 0)
+                brojac++;
+            return brojac;
+    }
+
+}
+
+//slobodna mesta oko figura na koja moze da se odigra u drugoj fazi. Moze odmah da se koristi u f-ji eval.
+int sloboda(int tabla[24]) {
+    int rezultat = 0;
+    int brojac;
+
+    for (brojac = 0; brojac < 24; brojac++)
+          if (tabla[brojac] == 1)
+            rezultat = rezultat + slobodnaMestaOkoPozicije(tabla, brojac);
+        else if (tabla[brojac] == -1)
+            rezultat = rezultat - slobodnaMestaOkoPozicije(tabla, brojac);
+
+
+    return rezultat;
 }
 
